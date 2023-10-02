@@ -15,7 +15,7 @@ interface IDP
     List<Integer> getBestConstructs(int targetNum, int[] nums, int index, HashMap<String, List<Integer>> memo);
 }
 
-public class DP implements IDP{
+public class NumberConstruct implements IDP{
 
     @Override
     public List<Integer> getBestConstructs(int targetNum, int[] nums)
