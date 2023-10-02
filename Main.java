@@ -5,7 +5,7 @@ public class Main {
         NumberConstruct nc = new NumberConstruct();
         
         int targetNum = 10;
-        int[] nums = new int[]{ 2, 3, 5, 6};
+        int[] nums = new int[]{2, 3, 5, 6};
 
         System.out.println("Can Construct- " + nc.canConstruct(targetNum, nums));
         System.out.println("How Many Construct- " + nc.howManyConstruct(targetNum, nums));

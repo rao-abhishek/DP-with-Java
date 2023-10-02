@@ -33,13 +33,12 @@ public class NumberConstruct implements INumberConstruct{
 
 		if(targetNum==0)
 		{
-
 			return new ArrayList<Integer>();
 		}
 		
 		if(targetNum<0)
 		{
-			return new ArrayList<>();
+			return null;
 		}
 		
 		List<Integer> bestRes = null;
@@ -47,11 +46,14 @@ public class NumberConstruct implements INumberConstruct{
 		for(int i = index; i<nums.length; i++)
 		{
             List<Integer> curRes = getBestConstructs(targetNum-nums[i], nums, i, memo);
-            List<Integer> newRes = new ArrayList<>(curRes);
-            newRes.add(nums[i]);
-			if(bestRes==null || bestRes.size()>newRes.size())
+            if(curRes!=null)
             {
-                bestRes = newRes;
+                List<Integer> newRes = new ArrayList<>(curRes);
+                newRes.add(nums[i]);
+                if(bestRes==null || bestRes.size()>=newRes.size())
+                {
+                    bestRes = newRes;
+                }
             }
 		}
 
