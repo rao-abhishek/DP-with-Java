@@ -26,10 +26,10 @@ public class NumberConstruct implements INumberConstruct{
 	@Override
 	public List<Integer> getBestConstructs(int targetNum, int[] nums, int index, HashMap<String, List<Integer>> memo)
 	{
-        if(memo.containsKey(targetNum+"_"+index))
-        {
-            return memo.get(targetNum+"_"+index);
-        }
+        // if(memo.containsKey(targetNum+"_"+index))
+        // {
+        //     return memo.get(targetNum+"_"+index);
+        // }
 
 		if(targetNum==0)
 		{
@@ -67,10 +67,10 @@ public class NumberConstruct implements INumberConstruct{
     @Override
     public List<List<Integer>> getAllConstructs(int targetNum, int[] nums, int index, HashMap<String, List<List<Integer>>> memo) {
         
-        if(memo.containsKey(targetNum+"_"+index))
-        {
-            return memo.get(targetNum+"_"+index);
-        }
+        // if(memo.containsKey(targetNum+"_"+index))
+        // {
+        //     return memo.get(targetNum+"_"+index);
+        // }
         
         if(targetNum==0)
         {
@@ -111,9 +111,9 @@ public class NumberConstruct implements INumberConstruct{
 
     @Override
     public int howManyConstruct(int targetNum, int[] nums, int index, HashMap<String, Integer> memo) {
-        if (memo.containsKey(targetNum+"_"+index)) {
-            return memo.get(targetNum+"_"+index);
-        }
+        // if (memo.containsKey(targetNum+"_"+index)) {
+        //     return memo.get(targetNum+"_"+index);
+        // }
     
         if (targetNum == 0) {
             memo.put(targetNum+"_"+index, 1);
@@ -144,6 +144,10 @@ public class NumberConstruct implements INumberConstruct{
     @Override
     public boolean canConstruct(int targetNum, int[] nums, HashMap<Integer, Boolean> memo)
     {
+       if(memo.containsKey(targetNum))
+       {
+        return memo.get(targetNum);
+       }   
        if(targetNum==0)
        {
         memo.put(targetNum, true);
