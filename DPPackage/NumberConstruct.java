@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-interface IDP 
+interface INumberConstruct
 {
     boolean canConstruct(int targetNum, int[] nums);
     boolean canConstruct(int targetNum, int[] nums, HashMap<Integer, Boolean> memo);
@@ -15,7 +15,7 @@ interface IDP
     List<Integer> getBestConstructs(int targetNum, int[] nums, int index, HashMap<String, List<Integer>> memo);
 }
 
-public class NumberConstruct implements IDP{
+public class NumberConstruct implements INumberConstruct{
 
     @Override
     public List<Integer> getBestConstructs(int targetNum, int[] nums)
