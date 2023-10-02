@@ -6,7 +6,7 @@ import java.util.List;
 interface INumberConstruct
 {
     boolean canConstruct(int targetNum, int[] nums);
-    boolean canConstruct(int targetNum, int[] nums, HashMap<Integer, Boolean> memo);
+    boolean canConstruct(int targetNum, int[] nums, HashMap<String, Boolean> memo, int index);
     int howManyConstruct(int targetNum, int[] nums);
     int howManyConstruct(int targetNum, int[] nums,int index, HashMap<String, Integer> memo);
     List<List<Integer>> getAllConstructs(int targetNum, int[] nums);
@@ -15,7 +15,7 @@ interface INumberConstruct
     List<Integer> getBestConstructs(int targetNum, int[] nums, int index, HashMap<String, List<Integer>> memo);
 }
 
-public class NumberConstruct implements INumberConstruct{
+public class NumberConstruct implements INumberConstruct {
 
     @Override
     public List<Integer> getBestConstructs(int targetNum, int[] nums)
@@ -140,31 +140,31 @@ public class NumberConstruct implements INumberConstruct{
     @Override
     public boolean canConstruct(int targetNum, int[] nums)
     {
-        return canConstruct(targetNum, nums, new HashMap<Integer, Boolean>());
+        return canConstruct(targetNum, nums, new HashMap<String, Boolean>(), 0);
     }
 
     @Override
-    public boolean canConstruct(int targetNum, int[] nums, HashMap<Integer, Boolean> memo)
+    public boolean canConstruct(int targetNum, int[] nums, HashMap<String, Boolean> memo, int index)
     {
-       if(memo.containsKey(targetNum))
+       if(memo.containsKey(targetNum+"_"+index))
        {
-        return memo.get(targetNum);
+        return memo.get(targetNum+"_"+index);
        }   
        if(targetNum==0)
        {
-        memo.put(targetNum, true);
+        memo.put(targetNum+"_"+index, true);
         return true;
        }
 
-       for(int i : nums)
+       for(int i = index; i<nums.length; i++)
        {
-        if(canConstruct(targetNum - i, nums, memo)==true)
+        if(canConstruct(targetNum - nums[i], nums, memo,i)==true)
         {
-            memo.put(targetNum, true);
+            memo.put(targetNum+"_"+index, true);
             return true;
         }
        }
-       memo.put(targetNum, false);
+       memo.put(targetNum+"_"+index, false);
        return false;
     }
 }
