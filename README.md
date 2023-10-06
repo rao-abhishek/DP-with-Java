@@ -1,2 +1,2 @@
-# DP-with-Java
-Dynamic Programming with JAVA for Educational Purpose
+# AlgoDP-with-Java
+Algorithms & Dynamic Programming with JAVA for Educational Purpose
