@@ -1,4 +1,4 @@
-package DPPackage;
+package AlgoPackage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +16,20 @@ interface INumberConstruct
 }
 
 public class NumberConstruct implements INumberConstruct {
+
+    public static void run() {
+        NumberConstruct nc = new NumberConstruct();
+        for(int i = 0; i<=10; i++)
+        {
+            int targetNum = i;
+            int[] nums = new int[]{2, 3, 5, 6};
+
+            System.out.println("Can Construct- " + nc.canConstruct(targetNum, nums));
+            System.out.println("How Many Construct- " + nc.howManyConstruct(targetNum, nums));
+            System.out.println("Get All Constructs- " + nc.getAllConstructs(targetNum, nums));
+            System.out.println("Get Best Constructs- " + nc.getBestConstructs(targetNum,nums));
+        }
+    }
 
     @Override
     public List<Integer> getBestConstructs(int targetNum, int[] nums)
@@ -156,9 +170,15 @@ public class NumberConstruct implements INumberConstruct {
         return true;
        }
 
+       if(targetNum<0)
+       {
+        memo.put(targetNum+"_"+index, false);
+        return false;
+       }
+
        for(int i = index; i<nums.length; i++)
        {
-        if(canConstruct(targetNum - nums[i], nums, memo,i)==true)
+        if(canConstruct(targetNum - nums[i], nums, memo, i)==true)
         {
             memo.put(targetNum+"_"+index, true);
             return true;
